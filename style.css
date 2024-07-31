@@ -1,46 +1,64 @@
 :root {
-  --light-background-color: #dddddd;
+  --light-page-bg-color: #dddddd;
+  --light-main-bg-color: #fafafa;
   --light-text-color: #444444;
-  --light-link-color: #666666;
+  --light-link-color: #555555;
 
-  --dark-background-color: #333333;
+  --dark-page-bg-color: #333333;
+  --dark-main-bg-color: #333333;
   --dark-text-color: #cccccc;
   --dark-link-color: #999999;
 
-  --background-color: var(--light-background-color);
+  --header-footer-bg-color: rgba(0, 0, 0, 0.125);
+  --page-bg-color: var(--light-page-bg-color);
+  --main-bg-color: var(--light-main-bg-color);
   --text-color: var(--light-text-color);
   --link-color: var(--light-link-color);
 
-  --margin: 6px;
+  --spacing: 6px;
+}
+
+:root:not([color-scheme]) #color-scheme-toggle {
+  opacity: 0.5;
+}
+
+#light-color-scheme-icon {
+  display: none;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([color-scheme=light]) {
-    --background-color: var(--dark-background-color);
+    --page-bg-color: var(--dark-page-bg-color);
+    --main-bg-color: var(--dark-main-bg-color);
     --text-color: var(--dark-text-color);
     --link-color: var(--dark-link-color);
-
   }
+
+  :root:not([color-scheme=light]) #dark-color-scheme-icon { display: none; }
+  :root:not([color-scheme=light]) #light-color-scheme-icon { display: initial; }
 }
 
 :root[color-scheme=dark] {
-  --background-color: var(--dark-background-color);
+  --page-bg-color: var(--dark-page-bg-color);
+  --main-bg-color: var(--dark-main-bg-color);
   --text-color: var(--dark-text-color);
   --link-color: var(--dark-link-color);
-
 }
+
+:root[color-scheme=dark] #dark-color-scheme-icon { display: none; }
+:root[color-scheme=dark] #light-color-scheme-icon { display: initial; }
+
 
 body {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--margin) * 2);
 
   min-height: 100vh;
   min-width: 400px;
 
   margin: 0;
 
-  background-color: var(--background-color);
+  background-color: var(--page-bg-color);
   color: var(--text-color);
 
   font-family: sans-serif;
@@ -53,6 +71,7 @@ a {
 }
 
 a:hover {
+  color: var(--text-color);
   text-decoration: underline;
 }
 
@@ -73,7 +92,7 @@ a[href*="//"]:hover::after {
 }
 
 nav {
-  padding: calc(var(--margin) * 2);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
 
   overflow-x: auto;
 }
@@ -81,14 +100,14 @@ nav {
 nav ul {
   display: flex;
   align-items: center;
-  gap: calc(var(--margin) * 2);
+  gap: calc(var(--spacing) * 2);
 
   margin: 0;
   padding: 0;
 }
 
 nav#site-nav {
-  background-color: rgba(0, 0, 0, 0.125);
+  background-color: var(--header-footer-bg-color);
 }
 
 nav#site-nav ul {
@@ -96,38 +115,90 @@ nav#site-nav ul {
 }
 
 nav li {
+  display: inline-block;
+
   list-style: none;
   flex-shrink: 0;
+}
+
+#site-nav li.nav-buttons {
+  flex-grow: 1;
+
+  display: flex;
+  align-items: start;
+}
+
+#site-nav button {
+  margin: 0;
+  border: 0;
+  padding: 3px;
+
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#color-scheme-toggle {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 20px;
+}
+
+:root:not([color-scheme]) #color-scheme-revert {
+  display: none;
+}
+
+#color-scheme-revert {
+  width: 24px;
+  height: 24px;
+
+  border-radius: 12px;
+  translate: -14px -4px;
+}
+
+#site-nav button svg {
+  background-color: var(--page-bg-color);
+  border: 1px solid var(--link-color);
+  fill: var(--link-color);
+  border-radius: 16px;
+}
+
+#site-nav button:hover svg {
+  background-color: var(--main-bg-color);
+  fill: var(--text-color);
+  border-color: var(--text-color);
 }
 
 nav a {
   display: inline-block;
 
-  padding: var(--margin);
+  padding: var(--spacing);
 }
 
 main {
   flex-grow: 1;
 
-  width: calc(100% - (var(--margin) * 12));
+  width: calc(100% - (var(--spacing) * 12));
   max-width: 900px;
   margin: auto;
+
+  background-color: var(--main-bg-color);
 }
 
 main > h1 {
+  margin: calc(var(--spacing) * 6) calc(var(--spacing) * 3);
+  
   text-align: center;
-
-  margin: calc(var(--margin) * 3);
+  font-weight: normal;
 }
 
 footer {  
-  background-color: rgba(0, 0, 0, 0.125);
+  background-color: var(--header-footer-bg-color);
 
-  padding: var(--margin);
+  padding: var(--spacing);
 }
 
 footer ul {
-  width: calc(100% - (var(--margin) * 12));
+  width: calc(100% - (var(--spacing) * 12));
   max-width: 900px;
   margin: auto;
 }
