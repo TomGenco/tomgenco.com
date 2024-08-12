@@ -1,0 +1,23 @@
+@media (prefers-color-scheme: dark) {
+  :root:not([color-scheme=light]) {
+    --page-bg-color: #333333;
+    --header-footer-bg-color: #222222;
+    --main-bg-color: #333333;
+    --text-color: #cccccc;
+    --link-color: #999999;
+  }
+
+  :root:not([color-scheme=light]) #color-scheme-icon-light { display: none; }
+  :root:not([color-scheme=light]) #color-scheme-icon-dark { display: initial; }
+}
+
+:root[color-scheme=dark] {
+  --page-bg-color: #333333;
+  --header-footer-bg-color: #222222;
+  --main-bg-color: #333333;
+  --text-color: #cccccc;
+  --link-color: #999999;
+}
+
+:root[color-scheme=dark] #color-scheme-icon-light { display: none; }
+:root[color-scheme=dark] #color-scheme-icon-dark { display: initial; }
