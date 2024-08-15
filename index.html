@@ -98,10 +98,11 @@
 <body>
   <header>
     <nav>
-      <ul>
-        <li>
+      <menu>
+        <li><a href="/" class="current">Home</a></li>
+        <li id="color-scheme-buttons">
           <button title="Toggle light/dark color schemes" id="color-scheme-button">
-            <svg width="32" height="32" viewBox="0 0 32 32" version="1.1" id="color-scheme-icon-light" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 32 32" version="1.1" id="color-scheme-icon-light" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
               <title>Toggle color scheme (currently set to light)</title>
               <circle cx="16" cy="16" r="5" />
               <path d="M 12.33,4.53 10.48,5.3 12.01,9 13.86,8.23 Z" />
@@ -113,23 +114,22 @@
               <path d="M 8.23,18.14 4.53,19.67 5.3,21.52 9,19.99 Z" />
               <path d="M 5.3,10.48 4.53,12.33 8.23,13.86 9,12.01 Z" />
             </svg>
-            <svg width="32" height="32" viewBox="0 0 32 32" version="1.1" id="color-scheme-icon-dark" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 32 32" version="1.1" id="color-scheme-icon-dark" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
               <title>Toggle color scheme (currently set to dark)</title>
               <path d="m 20.61,4 -1.28,1.28 c 0.62,1.37 0.94,2.86 0.94,4.37 0,5.88 -4.74,10.62 -10.62,10.62 -1.51,0 -3,-0.32 -4.37,-0.94 L 4,20.61 C 6.03,25.1 10.51,28 15.44,28 22.37,28 28,22.37 28,15.44 28,10.51 25.1,6.03 20.61,4 Z" />
             </svg>
           </button>
           <button hidden title="Reset color scheme" id="color-scheme-button-reset">
-            <svg width="16" height="16" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
               <path d="m 8.71,7.29 -1.42,1.42 7.3,7.29 -7.3,7.29 1.42,1.42 7.29,-7.3 7.29,7.3 1.42,-1.42 L 17.41,16 24.71,8.71 23.29,7.29 16,14.59 Z" />
             </svg>
           </button>
         </li>
-        <li><a href="#" class="current">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="https://notes.tomgenco.com">Notes</a></li>
-      </ul>
+      </menu>
     </nav>
   </header>
   <main>
@@ -139,12 +139,11 @@
   </main>
   <footer>
     <nav>
-      <ul>
+      <menu>
         <li><a href="https://genco.dev">Genco.dev</a></li>
         <li><a href="https://github.com/TomGenco">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/tomjgenco/">LinkedIn</a></li>
-        <li><a href="#">Mastodon</a></li>
-      </ul>
+      </menu>
     </nav>
   </footer>
 </body>
