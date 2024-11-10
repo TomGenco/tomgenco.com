@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | TomGenco.com</title>
+  <title>Blog | TomGenco.com</title>
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/dark.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css">
@@ -17,8 +17,8 @@
       colorSchemeToggle = document.querySelector('#color-scheme-button');
       colorSchemeReset = document.querySelector('#color-scheme-button-reset');
       colorSchemeToggle.addEventListener('click', updateColorScheme);
-      colorSchemeReset.addEventListener('click', updateColorScheme);  
-      
+      colorSchemeReset.addEventListener('click', updateColorScheme);
+
       if (localStorage.getItem('color-scheme'))
         setColorScheme(localStorage.getItem('color-scheme'));
     });
@@ -79,7 +79,7 @@
   <header>
     <nav>
       <menu>
-        <li><a href="#" class="current">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li>
           <button title="Toggle color scheme (currently set to auto)" id="color-scheme-button">
             <svg viewBox="0 0 32 32" version="1.1" id="color-scheme-icon-light" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -105,13 +105,13 @@
         </li>
         <li><a href="/about.html">About</a></li>
         <li><a href="/projects/">Projects</a></li>
-        <li><a href="/blog/">Blog</a></li>
+        <li><a href="#" class="current">Blog</a></li>
         <li><a href="https://notes.tomgenco.com">Notes</a></li>
       </menu>
     </nav>
   </header>
   <main>
-    <h1 id="title">Welcome to TomGenco.com</h1>
+    <h1 id="title">Blog</h1>
   </main>
   <footer>
     <nav>

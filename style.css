@@ -36,19 +36,33 @@ a.current {
   font-weight: bold;
 }
 
-/* External links */
-a[href*="//"]::after {
-  display: inline-block;
-  width: 16px;
-  content: "";
+@media (hover: none) {
+  /* External links */
+  a[href*="//"]::after {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='16' height='16' style='fill: rgba(128, 128, 128, 1);' viewBox='0 0 24 24'%3E%3Cpath d='M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z'%3E%3C/path%3E%3C/svg%3E") / "External Link";
+  }
 }
 
-a[href*="//"]:hover::after,
-a[href*="//"]:focus::after,
-a[href*="//"]:active::after {
-  display: inline-block;
-  width: 16px;
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='16' height='16' style='fill: rgba(128, 128, 128, 1);' viewBox='0 0 24 24'%3E%3Cpath d='M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z'%3E%3C/path%3E%3C/svg%3E") / "External Link";
+@media (hover: hover) {
+  /* External links */
+  a[href*="//"]::after {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    content: "";
+  }
+
+  a[href*="//"]:hover::after,
+  a[href*="//"]:focus::after,
+  a[href*="//"]:active::after {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='16' height='16' style='fill: rgba(128, 128, 128, 1);' viewBox='0 0 24 24'%3E%3Cpath d='M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z'%3E%3C/path%3E%3C/svg%3E") / "External Link";
+  }
 }
 
 p {
@@ -79,26 +93,19 @@ body {
 header,
 footer {
   width: 100%;
-
   padding: 0 var(--spacing);
-
   background-color: var(--header-footer-bg-color);
 }
 
 nav {
-  min-height: 40px;
   padding: var(--spacing);
 }
 
 menu {
   display: flex;
-  align-items: baseline;
   gap: var(--spacing);
 
   overflow-x: auto;
-
-  min-height: 40px;
-  height: 100%;
 
   margin: 0;
   padding: 0;
@@ -106,6 +113,7 @@ menu {
 
 nav li {
   display: block;
+  overflow: hidden;
 
   list-style: none;
 
@@ -117,18 +125,22 @@ header nav li:first-of-type {
   flex-grow: 1;
 }
 
-nav li#color-scheme-buttons {
-  display: flex;
-
-  width: 40px;
-  height: 40px;
+footer nav li:last-of-type {
+  display: inline-block;
+  flex: 1 0 auto;
+  margin: var(--spacing);
+  padding: var(--spacing);
+  text-align: right;
+  opacity: 25%;
 }
 
 nav button {
-  translate: 0 6px;
-  
-  margin: 0;
+  width: 32px;
+  height: 32px;
+  margin: var(--spacing);
+  padding: 0;
   border: 0;
+  border-radius: 50%;
 
   background-color: rgba(0, 0, 0, 0);
 }
@@ -146,32 +158,21 @@ nav button:hover {
   opacity: 0.5;
 }
 
-#color-scheme-button {  
-  width: 32px;
-  height: 32px;
-  
-  padding: 4px;
-
-  border-radius: 30px;
-}
-
 #color-scheme-button-reset {
   width: 16px;
   height: 16px;
-
-  padding: 2px;
-
-  border-radius: 10px;
-  translate: -12px 2px;
+  position: absolute;
+  translate: -24px 0;
 }
 
 nav button svg {
+  width: 75%;
 
-  border-radius: 16px;
+  margin: 12.5%;
+
+  border-radius: 50%;
 
   fill: var(--link-color);
-  /* background-color: var(--link-color); */
-  /* fill: var(--header-footer-bg-color); */
 }
 
 :root:not([color-scheme]) nav button svg {
@@ -180,23 +181,21 @@ nav button svg {
 }
 
 nav button:hover svg {
-  /* background-color: var(--text-color); */
   background-color: var(--main-bg-color);
   fill: var(--text-color);
-}
-
-#color-scheme-button svg {  
-  width: 24px;
-  height: 24px;
-
-  border-radius: 12px;
 }
 
 #color-scheme-button-reset svg {
   width: 12px;
   height: 12px;
 
+  fill: var(--main-bg-color);
+  background-color: var(--link-color);
   border-radius: 6px;
+}
+
+#color-scheme-button-reset:hover svg {
+  background-color: var(--text-color);
 }
 
 #color-scheme-icon-dark { display: none; }
@@ -204,11 +203,8 @@ nav button:hover svg {
 nav a {
   display: inline-block;
 
-  padding: calc(var(--spacing) * 2);
-}
-
-nav a[href*="//"] {
-  padding-right: 0;
+  margin: var(--spacing);
+  padding: var(--spacing);
 }
 
 main {
@@ -221,7 +217,7 @@ main {
 
   background-color: var(--main-bg-color);
 
-  border-radius: 4px;
+  border-radius: var(--spacing);
 }
 
 main > h1 {
